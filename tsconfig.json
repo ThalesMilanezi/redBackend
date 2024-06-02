@@ -16,7 +16,7 @@
 			"@/*":["*"],
 			"@/tests/*":["../tests/*"],
 		},
-		"strict": true,
+		"strict": false,
 	},
 	"include": ["src"],
 }

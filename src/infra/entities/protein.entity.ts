@@ -2,7 +2,7 @@ import { Entity, Column } from 'typeorm';
 import { CustomBaseEntity } from './custom-base-entity';
 
 @Entity()
-class ProteinEntity extends CustomBaseEntity {
+export class ProteinEntity extends CustomBaseEntity {
   @Column()
   name: string;
 

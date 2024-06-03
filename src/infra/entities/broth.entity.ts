@@ -2,7 +2,7 @@ import { Entity, Column } from 'typeorm';
 import { CustomBaseEntity } from './custom-base-entity';
 
 @Entity()
-class BrothEntity extends CustomBaseEntity {
+export class BrothEntity extends CustomBaseEntity {
   @Column()
   name: string;
 

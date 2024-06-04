@@ -16,5 +16,5 @@ export class BrothEntity extends CustomBaseEntity {
   description: string;
 
   @Column()
-  price: string;
+  price: number;
 }

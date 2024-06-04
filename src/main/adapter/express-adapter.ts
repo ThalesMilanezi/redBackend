@@ -7,6 +7,9 @@ export interface HttpResponse {
 
 export interface HttpRequest {
   body?: any;
+  params?: any;
+  query?: any;
+  headers?: any;
 }
 
 export interface Controller {

@@ -1,9 +1,9 @@
-import { BrothEntity } from '@/infra/entities/broth.entity';
+import { BrothEntity } from '../../infra/entities/broth.entity';
 import { BaseUseCase } from '../contracts/base-usecase';
-import { PgBrothRepository } from '@/infra/repositories/broth.repository';
+import { PgBrothRepository } from '../../infra/repositories/broth.repository';
 
 export class GetAllBrothsUC extends BaseUseCase<void, BrothEntity[]> {
-  constructor(private brothRepository: PgBrothRepository) {
+  constructor(private readonly brothRepository: PgBrothRepository) {
     super();
   }
 
@@ -11,7 +11,9 @@ export class GetAllBrothsUC extends BaseUseCase<void, BrothEntity[]> {
     try {
       console.log(`[GetAllBroths] Getting all broths attempt`);
       const broths = await this.brothRepository.findAllBroths();
-      if (!broths) throw new Error('broths not found.');
+      if (!broths.length) {
+        throw new Error('No broths found.');
+      }
       return broths;
     } catch (error) {
       console.error(`[GetAllBroths] Error: ${error.message}`);

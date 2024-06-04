@@ -1,11 +1,18 @@
+import { GetAllBrothsUC } from '../../domain/usecases/get-all-broths';
 import { ok, serverError } from '../helpers/http-helper';
-import { HttpRequest, HttpResponse } from '../protocols/http';
+import { HttpResponse } from '../protocols/http';
 
 export class BrothsController {
-  constructor() {}
-  async handle(req: HttpRequest): Promise<HttpResponse> {
+  private readonly getAllBrothsUC: GetAllBrothsUC;
+
+  constructor(getAllBrothsUC: GetAllBrothsUC) {
+    this.getAllBrothsUC = getAllBrothsUC;
+  }
+
+  async handle(): Promise<HttpResponse> {
     try {
-      return ok([]);
+      const broths = await this.getAllBrothsUC.execute();
+      return ok(broths);
     } catch (error) {
       return serverError(error as Error);
     }
